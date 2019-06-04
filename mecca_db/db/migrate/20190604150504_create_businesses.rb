@@ -6,6 +6,7 @@ class CreateBusinesses < ActiveRecord::Migration[5.2]
       t.string :photo_url
       t.text :description
       t.boolean :is_green
+      t.string :category
 
       t.timestamps
     end

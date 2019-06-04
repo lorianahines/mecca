@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_04_150504) do
+ActiveRecord::Schema.define(version: 2019_06_04_162506) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,24 @@ ActiveRecord::Schema.define(version: 2019_06_04_150504) do
     t.string "photo_url"
     t.text "description"
     t.boolean "is_green"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_businesses_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.date "review_date"
+    t.string "title"
+    t.integer "rating"
+    t.text "review_body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "business_id"
+    t.index ["business_id"], name: "index_reviews_on_business_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,4 +52,7 @@ ActiveRecord::Schema.define(version: 2019_06_04_150504) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "businesses", "users"
+  add_foreign_key "reviews", "businesses"
+  add_foreign_key "reviews", "users"
 end
