@@ -5,6 +5,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
+    puts "business params: #{params}"
     @user = User.find(params[:user_id])
     @business = @user.businesses.find(params[:id])
     render json: @business, status: :ok

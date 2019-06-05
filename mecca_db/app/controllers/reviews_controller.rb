@@ -4,20 +4,24 @@ class ReviewsController < ApplicationController
     render json: @reviews, status: :ok
   end
 
-  # def show
-  #   @user = User.find(params[:user_id])
-  #   @business = @user.businesses.find(params[:id])
-  #   render json: @business, status: :ok
-  # end
+  def show
+    @user = User.find(params[:user_id])
+    puts "This is the user #{@user.id}"
+    puts "This is the review #{params[:id]}"
+    @review = @user.reviews.find(params[:id])
+   
+    render json: @review, status: :ok
+    
+  end
 
-  # def create
-  #   @business = Business.new(business_params)
-  #   if @business.save
-  #     render json: @business, status: :created
-  #   else
-  #     render json: @business.errors, status: :unprocessable_entity
-  #   end
-  # end
+  def create
+    @review = Review.new(review_params)
+    if @review.save
+      render json: @review, status: :created
+    else
+      render json: @review.errors, status: :unprocessable_entity
+    end
+  end
 
   # def update
   #   @user = User.find(params[:user_id])
@@ -41,9 +45,9 @@ class ReviewsController < ApplicationController
   #   end
   # end
 
-  # private
+  private
 
-  # def business_params
-  #   params.require(:business).permit(:name, :url, :photo_url, :description, :is_green, :category, :user_id)
-  # end
+  def review_params
+    params.require(:review).permit(:review_date, :title, :rating, :review_body, :user_id, :business_id)
+  end
 end
