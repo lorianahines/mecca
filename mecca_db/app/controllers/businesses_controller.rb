@@ -31,6 +31,14 @@ class BusinessesController < ApplicationController
   end
 
   def destroy
+    @user = User.find(params[:user_id])
+    @business = Business.find(params[:id])
+
+    if @business.destroy
+      render json: @business, status: :no_content
+    else
+      render json: { errors: @business.errors }, status: :not_found
+    end
   end
 
   private
