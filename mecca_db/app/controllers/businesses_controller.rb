@@ -5,9 +5,9 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    # @user = User.find(params[:id])
-    # @businesses = @user.businesses
-    # render json: @businesses, status: :ok
+    @user = User.find(params[:user_id])
+    @business = @user.businesses.find(params[:id])
+    render json: @business, status: :ok
   end
 
   def create
@@ -17,11 +17,17 @@ class BusinessesController < ApplicationController
     else
       render json: @business.errors, status: :unprocessable_entity
     end
-  
-
   end
 
   def update
+    @user = User.find(params[:user_id])
+    @business = Business.find(params[:id])
+
+    if @business.update(business_params)
+      render json: @business, status: :ok
+    else
+      render json: { errors: @business.errors }, status: :unprocessable_entity
+    end
   end
 
   def destroy
