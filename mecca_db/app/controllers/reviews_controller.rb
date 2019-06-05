@@ -23,16 +23,16 @@ class ReviewsController < ApplicationController
     end
   end
 
-  # def update
-  #   @user = User.find(params[:user_id])
-  #   @business = Business.find(params[:id])
+  def update
+    @user = User.find(params[:user_id])
+    @review = Review.find(params[:id])
 
-  #   if @business.update(business_params)
-  #     render json: @business, status: :ok
-  #   else
-  #     render json: { errors: @business.errors }, status: :unprocessable_entity
-  #   end
-  # end
+    if @review.update(review_params)
+      render json: @review, status: :ok
+    else
+      render json: { errors: @review.errors }, status: :unprocessable_entity
+    end
+  end
 
   # def destroy
   #   @user = User.find(params[:user_id])
