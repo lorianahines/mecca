@@ -5,8 +5,8 @@ class Header extends React.Component{
     return(
       <header>
         <h1>Mecca</h1>
-        <button>Sign Up</button>
-        <button>Login</button>
+        <button >Sign Up</button>
+        <button onClick={this.props.clickedLogin}>Login</button>
       </header>
     )
   }

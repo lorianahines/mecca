@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 class ShopCard extends React.Component{
 
@@ -11,6 +12,7 @@ class ShopCard extends React.Component{
           <img src={shop.photo_url}/>
           <p>{shop.description}</p>
           <a href={shop.url}>Visit</a>
+          {/* <Link to="/main/business">More...</Link> */}
         </div>
       );
     });
@@ -25,6 +27,7 @@ class ShopCard extends React.Component{
           <img src={shop.photo_url}/>
           <p>{shop.description}</p>
           <a href={shop.url}>Visit</a>
+          {/* <Link to="/main/business">More...</Link> */}
         </div>
       );
     });
@@ -32,7 +35,7 @@ class ShopCard extends React.Component{
   render(){
     return(
       <div>
-        {(this.props.category) ? this.renderCategoryShops() : (this.props.shops)? this.renderShops() : <p>Loading</p>}
+        {(this.props.categoryShops.length > 0) ? this.renderCategoryShops() : (this.props.shops)? this.renderShops() : <p>Loading</p>}
       </div>
     )
   }
