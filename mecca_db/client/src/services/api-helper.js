@@ -31,7 +31,7 @@ export const getUser = async (id) =>{
   }
 }
 
-//create business
+//create shop
 // /users/:user_id/businesses(.:format)                                                     b
 export const createShop = async (user_id, data) =>{
   try{
@@ -41,6 +41,20 @@ export const createShop = async (user_id, data) =>{
     console.log(e)
   }
 }
+
+//update shop
+
+export const createShop = async (user_id, shop_id, data) =>{
+  try{
+    const newShop = await userApi.put(`/${user_id}/businesses/${shop_id}`, data)
+    return newShop.data
+  }catch(e){
+    console.log(e)
+  }
+}
+
+
+
 
 // restaurantRouter.post('/restaurants', async (request, response) => {
 //   try {
