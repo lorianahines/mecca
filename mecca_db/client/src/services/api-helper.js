@@ -44,7 +44,7 @@ export const createShop = async (user_id, data) =>{
 
 //update shop
 
-export const createShop = async (user_id, shop_id, data) =>{
+export const updateShop = async (user_id, shop_id, data) =>{
   try{
     const newShop = await userApi.put(`/${user_id}/businesses/${shop_id}`, data)
     return newShop.data
