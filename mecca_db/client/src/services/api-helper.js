@@ -42,17 +42,27 @@ export const createShop = async (user_id, data) =>{
   }
 }
 
-//update shop
 
+//update shop
 export const updateShop = async (user_id, shop_id, data) =>{
   try{
     const newShop = await userApi.put(`/${user_id}/businesses/${shop_id}`, data)
+    // console.log(newShop)
     return newShop.data
   }catch(e){
     console.log(e)
   }
 }
 
+//delete shop
+export const deleteShop = async (user_id, shop_id) =>{
+  try{
+    const resp = await userApi.delete(`/${user_id}/businesses/${shop_id}`)
+    return resp
+  }catch(e){
+    console.log(e)
+  }
+}
 
 
 
