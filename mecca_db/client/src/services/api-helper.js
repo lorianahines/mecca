@@ -20,6 +20,7 @@ export const displayAllShops = async () =>{
 }
 
 //business owner CRUD
+
 export const getUser = async (id) =>{
   try{
     const user = await userApi.get(`/${id}`)
@@ -29,6 +30,28 @@ export const getUser = async (id) =>{
     console.log(error)
   }
 }
+
+//create business
+// /users/:user_id/businesses(.:format)                                                     b
+export const createShop = async (user_id, data) =>{
+  try{
+    const newShop = await userApi.post(`/${user_id}/businesses`, data)
+    return newShop.data
+  }catch(e){
+    console.log(e)
+  }
+}
+
+// restaurantRouter.post('/restaurants', async (request, response) => {
+//   try {
+//     const restaurant = await Restaurant.create(request.body)
+//     response.json({
+//       restaurant
+//     })
+//   } catch (e) {
+//     response.status(500).json({ msg: e.message })
+//   }
+// })
 
 
 //reviews CRUD

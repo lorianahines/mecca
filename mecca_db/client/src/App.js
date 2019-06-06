@@ -80,6 +80,9 @@ class App extends React.Component {
       })
     }
   
+    clickedAddBusiness = () =>{
+      
+    }
   render(){
     return (
       <div className="App">

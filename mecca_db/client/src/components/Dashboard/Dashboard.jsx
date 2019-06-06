@@ -1,7 +1,14 @@
 import React from 'react'
 import Header from '../Header/Header'
+import NewShop from '../NewShop/NewShop'
 
 class Dashboard extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      addNewShop: false
+    }
+  }
   renderUser = () =>{
     const { user, shops } = this.props
     return (
@@ -26,11 +33,19 @@ class Dashboard extends React.Component{
     });
   }
 
+  handleNewShop = () =>{
+    this.setState({
+      addNewShop: true
+    })
+  }
+
   render(){
     return(
       <div>
         <Header />
         {(this.props.user) ? this.renderUser():  <h1>Loading...</h1>}
+        <button onClick={this.handleNewShop}>Add new business</button>
+        {(this.state.addNewShop) ? <NewShop /> : null }
         {(this.props.shops) ? this.renderShops():  <h1>Loading Your Businesses, Boss...</h1>}
       </div>
     )
