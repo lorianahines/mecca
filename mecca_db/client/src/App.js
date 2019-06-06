@@ -19,7 +19,8 @@ class App extends React.Component {
       category: null,
       categoryShops: [],
       wantsToLogin: false,
-      user: null
+      user: null,
+      userShops: null
     };
   } 
 
@@ -40,6 +41,7 @@ class App extends React.Component {
       this.setState({
         user: user
       })
+      this.getUserShops()
     }
   
     selectCategory = (e) =>{
@@ -62,6 +64,16 @@ class App extends React.Component {
       } 
     }
   
+    getUserShops = async () =>{
+      await this.state.user
+      const { user, shops } = this.state
+      if (user){
+        const userShops = shops.filter( shop => shop.user_id == 7) 
+        this.setState({
+          userShops: userShops
+        })
+      } 
+    }
     clickedLogin = () =>{
       this.setState({
         wantsToLogin: true
@@ -82,7 +94,7 @@ class App extends React.Component {
             category={this.state.category}
             categoryShops={this.state.categoryShops}/>}/>
           <Route exact path='/main/business' render={()=> <ShopPage/>}/>
-          <Route exact path='/user/dashboard' render={()=> <Dashboard user={this.state.user}/>}/>
+          <Route exact path='/user/dashboard' render={()=> <Dashboard user={this.state.user} shops={this.state.userShops}/>}/>
         </Switch>
       </div>
     );
