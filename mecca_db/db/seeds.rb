@@ -50,7 +50,30 @@ users = User.create([
     email: "ranelle@gmail.com",
     is_owner: false,
     password: "123456"
-  }
+  },
+  { 
+    first_name: "Rihanna",
+    last_name: "Fenty",
+    email: "rihanna@fenty.com",
+    is_owner: true,
+    password: "123456"
+
+  }, 
+  { 
+    first_name: "Samantha",
+    last_name: "Shoe",
+    email: "sam@shoe.com",
+    is_owner: true,
+    password: "123456"
+    
+  },
+  { 
+    first_name: "Leslie",
+    last_name: "Antonoff",
+    email: "leslie@antonoff.com",
+    is_owner: true,
+    password: "123456"
+  },
 ])
 
 businesses = Business.create([
@@ -82,6 +105,37 @@ businesses = Business.create([
     is_green: true,
     category: "beauty",
     user_id: 3
+  },
+  { 
+    name: "Fenty",
+    url: "https://www.fenty.com/us/en/home",
+    photo_url: "https://images.squarespace-cdn.com/content/v1/553fdbaee4b0d82b91dbde7d/1557752699669-UTH22R351FCZORHPSFIA/ke17ZwdGBToddI8pDm48kBPcBIEwrEhrd9i-too_ByIUqsxRUqqbr1mOJYKfIPR7LoDQ9mXPOjoJoqy81S2I8N_N4V1vUb5AoIIIbLZhVYy7Mythp_T-mtop-vrsUOmeInPi9iDjx9w8K4ZfjXt2dg9Nn1FRcAOBCOCmDzP-Th08rmc_l8BB1BHohWZSfG2NZtJ3qR9G2BYeA0wOAaeYNg/image-asset.jpeg",
+    description: "Inspired by a worldwide community beyond traditional boundaries, FENTY embraces a fundamental freedom: a freedom from convention and rules. 'Women are forces of this earth. We are multifaceted, complex, vulnerable yet bulletproof, and FENTY speaks to all of our intricacies. Some days I want to be submissive, many days I’m completely in charge and most days I feel like being both….so it was imperative that we created a line versatile enough to embrace and celebrate us in that way.' Robyn Rihanna Fenty",
+    is_green: true,
+    category: "clothing",
+    user_id: 7
+  },
+  {
+    name: "BuriedNKulture",
+    url: "https://buriednkulture.com/",
+    photo_url: "https://pbs.twimg.com/profile_images/1050860878650720256/Hht94mks.jpg",
+    description: "Each collection with Buried N Kulture is limited edition. Buried N Kulture is an experience created by Jekia Weary depicted by visuals and street fashion. Buried N Kulture is more than the style of clothing but the experience from where all kulture is birthed.
+
+    Inspired by the hoods across America.  
+  
+    No matter where your tree is planted you are Buried N Kulture, always remain #loyal2thesoil.",
+    is_green: true,
+    category: "clothing",
+    user_id: 8
+  },
+  {
+    name: "Sweet Knowledge Clothing",
+    url: "http://www.sweetknowledgeclothing.com/",
+    photo_url: "https://assets.bigcartel.com/theme_images/22123099/Header_Logo.jpg",
+    description: "If you ask any HBCU attendee they will mostly likely tell you choosing their institution was one of the greatest decisions of their lives, because like the old adage says - “The Blacker The College, The Sweeter The Knowledge”. A sweatshirt or a tee could be anything but when you’re rocking SKCC - it is sure to be SWEET. ",
+    is_green: true,
+    category: "clothing",
+    user_id: 9
   }
 ])
 

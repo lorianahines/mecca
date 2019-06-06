@@ -5,10 +5,10 @@ class CategoryList extends React.Component{
     return(
       <nav>
         <ul>
-          <li>Beauty</li>
-          <li>Children's & Toys</li>
-          <li>Household</li>
-          <li>Electronics</li>
+          <li onClick={this.props.selectCategory}>Beauty</li>
+          <li onClick={this.props.selectCategory}>Clothing</li>
+          <li onClick={this.props.selectCategory}>Household</li>
+          <li onClick={this.props.selectCategory}>Electronics</li>
         </ul>
       </nav>
     )
