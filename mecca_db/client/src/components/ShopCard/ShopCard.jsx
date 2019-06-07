@@ -12,7 +12,7 @@ class ShopCard extends React.Component{
           <img src={shop.photo_url}/>
           <p>{shop.description}</p>
           <a href={shop.url}>Visit</a>
-          {/* <Link to="/main/business">More...</Link> */}
+          <Link to="/main/business">More...</Link>
         </div>
       );
     });
@@ -27,7 +27,7 @@ class ShopCard extends React.Component{
           <img src={shop.photo_url}/>
           <p>{shop.description}</p>
           <a href={shop.url}>Visit</a>
-          {/* <Link to="/main/business">More...</Link> */}
+          <Link to="/main/business">More...</Link>
         </div>
       );
     });

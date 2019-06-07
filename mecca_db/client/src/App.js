@@ -57,7 +57,7 @@ class App extends React.Component {
       await this.state.category
       const { category, shops } = this.state
       if (category){
-        const categoryShops = shops.filter( shop => shop.category == category) 
+        const categoryShops = await shops.filter( shop => shop.category == category) 
         this.setState({
           categoryShops: categoryShops
         })
@@ -66,6 +66,7 @@ class App extends React.Component {
   
     getUserShops = async () =>{
       await this.state.user
+      await this.state.shops
       const { user, shops } = this.state
       if (user){
         const userShops = shops.filter( shop => shop.user_id == 7) 
@@ -80,9 +81,6 @@ class App extends React.Component {
       })
     }
   
-    clickedAddBusiness = () =>{
-      
-    }
   render(){
     return (
       <div className="App">

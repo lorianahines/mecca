@@ -45,6 +45,7 @@ class NewShop extends React.Component{
   render(){
     return(
       <div>
+        <h2>New Shop</h2>
         <form onSubmit={this.onShopFormSubmit}>
           <div>
             <label htmlFor="name">Name of Business</label>

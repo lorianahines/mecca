@@ -5,6 +5,10 @@ const businessApi = axios.create({
   baseURL: `${URL}/businesses`
 })
 
+const reviewsApi = axios.create({
+  baseURL: `${URL}/reviews`
+})
+
 const userApi = axios.create({
   baseURL: `${URL}/users`
 })
@@ -14,6 +18,16 @@ export const displayAllShops = async () =>{
     const shops = await businessApi.get("/")
     console.log(shops.data)
     return shops.data
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export const getAllReviews= async () =>{
+  try{
+    const reviews = await reviewsApi.get("/")
+    console.log(reviews.data)
+    return reviews.data
   } catch (error) {
     console.log(error)
   }
@@ -63,19 +77,6 @@ export const deleteShop = async (user_id, shop_id) =>{
     console.log(e)
   }
 }
-
-
-
-// restaurantRouter.post('/restaurants', async (request, response) => {
-//   try {
-//     const restaurant = await Restaurant.create(request.body)
-//     response.json({
-//       restaurant
-//     })
-//   } catch (e) {
-//     response.status(500).json({ msg: e.message })
-//   }
-// })
 
 
 //reviews CRUD
