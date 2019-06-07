@@ -80,7 +80,14 @@ export const deleteShop = async (user_id, shop_id) =>{
 
 
 //reviews CRUD
-
+export const createReview = async (user_id, data) =>{
+  try{
+    const newReview = await userApi.post(`/${user_id}/reviews`, data)
+    return newReview.data
+  }catch(e){
+    console.log(e)
+  }
+}
 
 //user auth
 // export const login = async (data) =>{
