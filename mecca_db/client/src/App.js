@@ -14,8 +14,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      shops: null,
-      reviews: [],
+      shops: [],
+      reviews: null,
       shopsLoaded: false,
       category: null,
       categoryShops: [],
@@ -111,7 +111,10 @@ class App extends React.Component {
             category={this.state.category}
             categoryShops={this.state.categoryShops}
             handleShopPage={this.handleShopPage}/>}/>
-          <Route exact path='/main/business' render={()=> <ShopPage shop={this.state.singleShop}/>}/>
+          <Route exact path='/main/business' 
+            render={()=> <ShopPage 
+            shop={this.state.singleShop}
+            reviews={this.state.reviews}/>}/>
           <Route exact path='/user/dashboard' render={()=> <Dashboard user={this.state.user} shops={this.state.userShops}/>}/>
         </Switch>
       </div>
