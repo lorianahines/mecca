@@ -1,12 +1,14 @@
 import React from 'react'
 import Header from '../Header/Header'
+import NewReview from '../NewReview/NewReview'
 
 class ShopPage extends React.Component{
   constructor(props){
     super(props);
     this.state={
       reviews: JSON.parse(localStorage.getItem('reviews')),
-      shop_id: null
+      shop_id: null,
+      addNewReview: false
     }
   }
 
@@ -58,13 +60,20 @@ class ShopPage extends React.Component{
     })
   }
 
+  handleNewReview = () =>{
+    this.setState({
+      addNewReview: true
+    })
+  }
+
   render(){
     return(
       <div>
         <Header />
         {(this.props.shop) ? this.renderShop() : <h1>Loading Store...</h1>}
-
         <h1>Reviews</h1>
+        <button onClick={this.handleNewReview}>Add review</button>
+        {(this.state.addNewReview) ? <NewReview  shop_id={this.state.shop_id}/> : null }
         {(this.state.reviews && this.state.reviews.length > 0) ? this.renderReviews() : <h4>Loading Reviews...</h4>}
       </div>
     )

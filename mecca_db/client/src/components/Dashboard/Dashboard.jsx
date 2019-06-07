@@ -100,10 +100,20 @@ class Dashboard extends React.Component{
       <div>
         <Header />
         {(this.props.user) ? this.renderUser():  <h1>Loading...</h1>}
-        <button onClick={this.handleNewShop}>Add new business</button>
-        {(this.state.addNewShop) ? <NewShop /> : null }
-        {(this.state.updateShop) ? <EditShop shop={this.state.shop} onShopFormChange={this.onShopFormChange} onShopFormSubmit={this.onShopFormSubmit}/> : null }
-        {(this.props.shops) ? this.renderShops():  <h1>Loading Your Businesses, Boss...</h1>}
+        <div id="dash-container">
+          <div>
+            <button onClick={this.handleNewShop}>Add new business</button>
+            {(this.state.addNewShop) ? <NewShop /> : null }
+            {(this.state.updateShop) ? <EditShop shop={this.state.shop} onShopFormChange={this.onShopFormChange} onShopFormSubmit={this.onShopFormSubmit}/> : null }
+            {(this.props.shops) ? this.renderShops():  <h1>Loading Your Businesses, Boss...</h1>}
+          </div>
+          <div>
+            <button onClick={this.handleNewShop}>Add new business</button>
+            {(this.state.addNewShop) ? <NewShop /> : null }
+            {(this.state.updateShop) ? <EditShop shop={this.state.shop} onShopFormChange={this.onShopFormChange} onShopFormSubmit={this.onShopFormSubmit}/> : null }
+            {(this.props.shops) ? this.renderShops():  <h1>Loading Your Businesses, Boss...</h1>}
+          </div>
+        </div>
       </div>
     )
   }
