@@ -24,6 +24,7 @@ class MainPage extends React.Component{
             shops={this.props.shops} 
             category={this.props.category}
             categoryShops={this.props.categoryShops}
+            handleShopPage={this.props.handleShopPage}
           />
         </main>
         

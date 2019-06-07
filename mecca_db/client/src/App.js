@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import { Route, Link, Switch } from "react-router-dom";
-import { displayAllShops, getUser } from './services/api-helper'
+import { displayAllShops, getUser, getAllReviews } from './services/api-helper'
 
 
 // import components
@@ -15,24 +15,34 @@ class App extends React.Component {
     super();
     this.state = {
       shops: null,
+      reviews: [],
       shopsLoaded: false,
       category: null,
       categoryShops: [],
       wantsToLogin: false,
       user: null,
-      userShops: null
+      userShops: null,
+      singleShop: JSON.parse(localStorage.getItem('currentShop'))
     };
   } 
 
   componentDidMount = async () => {
     this.fetchAllShops()
     this.fetchUser()
+    this.fetchAllReviews()
     }
   
     fetchAllShops = async ()=>{
       const shopsData = await displayAllShops();
       this.setState({
         shops: shopsData
+      })
+    }
+
+    fetchAllReviews = async ()=>{
+      const reviewsData = await getAllReviews();
+      this.setState({
+        reviews: reviewsData
       })
     }
   
@@ -80,7 +90,13 @@ class App extends React.Component {
         wantsToLogin: true
       })
     }
-  
+    
+    handleShopPage = (shop) =>{
+      localStorage.setItem('currentShop', JSON.stringify(shop))
+      this.setState({
+        singleShop: JSON.parse(localStorage.getItem('currentShop'))
+      })
+    }
   render(){
     return (
       <div className="App">
@@ -93,8 +109,9 @@ class App extends React.Component {
             selectCategory={this.selectCategory}
             shops={this.state.shops} 
             category={this.state.category}
-            categoryShops={this.state.categoryShops}/>}/>
-          <Route exact path='/main/business' render={()=> <ShopPage/>}/>
+            categoryShops={this.state.categoryShops}
+            handleShopPage={this.handleShopPage}/>}/>
+          <Route exact path='/main/business' render={()=> <ShopPage shop={this.state.singleShop}/>}/>
           <Route exact path='/user/dashboard' render={()=> <Dashboard user={this.state.user} shops={this.state.userShops}/>}/>
         </Switch>
       </div>
