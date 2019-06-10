@@ -112,7 +112,7 @@ class Dashboard extends React.Component{
   render(){
     return(
       <div>
-        <Header />
+        <Header user={this.props.user} logout={this.props.logout}/>
         {(this.props.user) ? this.renderUser():  <h1>Loading...</h1>}
         <div id="dash-container">
         <button onClick={this.handleNewShop}>Add new business</button>

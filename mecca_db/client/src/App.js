@@ -91,6 +91,12 @@ class App extends React.Component {
       this.handleLogin();
     }
   
+    handleLogoutButton = () =>{
+      localStorage.removeItem('user')
+      this.setState({
+        user: null
+      })
+    }
 
   //--------------------------Shops & Reviews --------------------//
     fetchAllShops = async ()=>{
@@ -162,7 +168,8 @@ class App extends React.Component {
             handleShopPage={this.handleShopPage}
             authHandleChange={this.authHandleChange}
             handleLoginButton={this.handleLoginButton}
-            user={this.state.user} />}/>
+            user={this.state.user}
+            logout={this.handleLogoutButton} />}/>
 
           <Route exact path='/main/business' 
             render={()=> <ShopPage 
@@ -172,7 +179,8 @@ class App extends React.Component {
             clickedLogin={this.clickedLogin}
             authHandleChange={this.authHandleChange}
             handleLoginButton={this.handleLoginButton}
-            user={this.state.user}/>}/>
+            user={this.state.user}
+            logout={this.handleLogoutButton}/>}/>
 
           <Route exact path='/user/dashboard' 
             render={()=> <Dashboard 
@@ -180,7 +188,8 @@ class App extends React.Component {
             currentUser={this.state.currentUser}
             shops={this.state.userShops} 
             getShops={this.fetchAllShops}
-            getUserShops={this.getUserShops}/>}/>
+            getUserShops={this.getUserShops}
+            logout={this.handleLogoutButton}/>}/>
         </Switch>
       </div>
     );

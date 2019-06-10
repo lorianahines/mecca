@@ -9,8 +9,8 @@ class Header extends React.Component{
         <Link to="/main" id='shop-link'>Shops</Link>
         <h1>Mecca</h1>
         <div id='auth-buttons'>
-          <button className='user-btns' onClick={this.props.clickedLogin}>Login</button>
-          <button className='user-btns' id='sign-up'><Link to="/user/dashboard" id='shop-link'>Dashboard</Link></button>
+          {this.props.user ? <button className='user-btns' ><Link className='user-btns' to="/user/dashboard">Dashboard</Link></button> : <button className="user-btns" id="sign-up">SignUp</button>}
+          {this.props.user ? <button className='user-btns' onClick={this.props.logout}>Logout</button> : <button className='user-btns' onClick={this.props.clickedLogin}>Login</button>}
          
         </div>
       </header>

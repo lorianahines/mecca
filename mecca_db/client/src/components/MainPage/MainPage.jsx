@@ -11,9 +11,9 @@ class MainPage extends React.Component{
   render(){
     return(
       <div>
-        <Header clickedLogin={this.props.clickedLogin}/>
+        <Header clickedLogin={this.props.clickedLogin} user={this.props.user} logout={this.props.logout}/>
         {(this.props.wantsToLogin) ? <LoginForm  close={this.props.clickedLogin} authHandleChange={this.props.authHandleChange}
-            handleLoginButton={this.props.handleLoginButton} user={this.props.user}/> : null }
+            handleLoginButton={this.props.handleLoginButton}/> : null }
         <main>
           <CategoryList 
             selectCategory={this.props.selectCategory} 
