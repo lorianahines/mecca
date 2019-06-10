@@ -2,22 +2,11 @@ import React from 'react'
 
 
 class EditShop extends React.Component{
-  // constructor(props){
-  //   super(props);
-  //   this.state = {
-  //     isEdited: false,
-  //     user_id: 7,
-   
-  //   }
-  // }
-
-  
-
   render(){
     return(
-      <div>
-        <h2>Edit Business</h2>
+      <div className='form-ctn'>
         <form onSubmit={this.props.onShopFormSubmit}>
+        <h2>Edit Shop</h2>
           <div>
             <label htmlFor="name">Name of Business</label>
             <input

@@ -13,6 +13,10 @@ const userApi = axios.create({
   baseURL: `${URL}/users`
 })
 
+const authApi = axios.create({
+  baseURL: `${URL}/auth/login`
+})
+
 export const displayAllShops = async () =>{
   try{
     const shops = await businessApi.get("/")
@@ -38,7 +42,7 @@ export const getAllReviews= async () =>{
 export const getUser = async (id) =>{
   try{
     const user = await userApi.get(`/${id}`)
-    console.log(user.data)
+    // console.log(user.data)
     return user.data
   } catch (error) {
     console.log(error)
@@ -90,8 +94,10 @@ export const createReview = async (user_id, data) =>{
 }
 
 //user auth
-// export const login = async (data) =>{
-//   const user = await api.post("/auth/login", data)
-//   return user.data
+export const loginUser = async (data) =>{
+  const resp = await authApi.post("/", data)
   
-// }
+  return resp.data
+  
+}
+

@@ -1,0 +1,16 @@
+.shop-card{
+  width: 25%;
+  box-shadow: 1px 14px 35px -17px rgba(0,0,0,0.75);
+  margin: 20px;
+  padding: 20px;
+}
+
+.descript{
+  font-size: 12px;
+}
+.shop-card-ctn{
+  width: 100vw;
+  justify-content: space-evenly;
+  display: flex;
+  flex-wrap: wrap
+}

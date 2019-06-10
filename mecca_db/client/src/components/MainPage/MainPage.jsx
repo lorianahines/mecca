@@ -1,12 +1,9 @@
 import React from 'react'
+import './MainPage.css'
 import Header from '../Header/Header'
 import CategoryList from '../CategoryList/CategoryList'
 import ShopCard from '../ShopCard/ShopCard'
 import LoginForm from '../LoginForm/LoginForm'
-
-
-
-
 
 
 class MainPage extends React.Component{
@@ -15,7 +12,8 @@ class MainPage extends React.Component{
     return(
       <div>
         <Header clickedLogin={this.props.clickedLogin}/>
-        {(this.props.wantsToLogin) ? <LoginForm /> : null }
+        {(this.props.wantsToLogin) ? <LoginForm  close={this.props.clickedLogin} authHandleChange={this.props.authHandleChange}
+            handleLoginButton={this.props.handleLoginButton} user={this.props.user}/> : null }
         <main>
           <CategoryList 
             selectCategory={this.props.selectCategory} 

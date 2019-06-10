@@ -1,0 +1,30 @@
+header{
+  width: 100vw;
+  background-color: black;
+  color: white;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around
+}
+
+.user-btns{
+  background: none;
+  color: white;
+  border: none;
+  font-size: 14px;
+  padding: none;
+}
+
+#sign-up{
+  font-weight: bold
+}
+
+h1{
+  font-size: 70px;
+}
+
+#shop-link{
+  color: white;
+  text-decoration: none;
+}

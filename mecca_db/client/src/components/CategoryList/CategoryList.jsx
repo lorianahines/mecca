@@ -1,4 +1,5 @@
 import React from 'react'
+import './CategoryList.css'
 
 class CategoryList extends React.Component{
   render(){

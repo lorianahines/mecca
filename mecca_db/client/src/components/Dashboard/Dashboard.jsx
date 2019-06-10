@@ -13,7 +13,7 @@ class Dashboard extends React.Component{
       updateShop: false,
       currentShop: null,
       isEdited: false,
-      user_id: 7,
+      isCreated: false,
       shop: null
 
     }
@@ -31,7 +31,7 @@ class Dashboard extends React.Component{
     const { shops } = this.props
     return shops.map((shop) => {
       return (
-        <div key={shop.id}>
+        <div key={shop.id} className='shop-card'>
           <h2>{shop.name}</h2>
           <img src={shop.photo_url}/>
           <p>{shop.description}</p>
@@ -44,8 +44,21 @@ class Dashboard extends React.Component{
   }
 
   handleNewShop = () =>{
+    if(this.state.addNewShop){
+      this.setState({
+        addNewShop: false
+      })
+    }else{
+      this.setState({
+        addNewShop: true
+      })
+    }
+    
+  }
+
+  handleCreate= () =>{
     this.setState({
-      addNewShop: true
+      isCreated: true
     })
   }
 
@@ -58,8 +71,9 @@ class Dashboard extends React.Component{
   }
 
   handleDeleteShop =  async (userID, shopID) =>{
-
-    const resp = await deleteShop(userID, shopID)
+    await deleteShop(userID, shopID)
+    await this.props.getShops()
+    await this.props.getUserShops()
   }
 
   onShopFormChange = (event) =>{
@@ -101,16 +115,25 @@ class Dashboard extends React.Component{
         <Header />
         {(this.props.user) ? this.renderUser():  <h1>Loading...</h1>}
         <div id="dash-container">
-          <div>
-            <button onClick={this.handleNewShop}>Add new business</button>
-            {(this.state.addNewShop) ? <NewShop /> : null }
-            {(this.state.updateShop) ? <EditShop shop={this.state.shop} onShopFormChange={this.onShopFormChange} onShopFormSubmit={this.onShopFormSubmit}/> : null }
-            {(this.props.shops) ? this.renderShops():  <h1>Loading Your Businesses, Boss...</h1>}
-          </div>
-          <div>
-            <button onClick={this.handleNewShop}>Add new business</button>
-            {(this.state.addNewShop) ? <NewShop /> : null }
-            {(this.state.updateShop) ? <EditShop shop={this.state.shop} onShopFormChange={this.onShopFormChange} onShopFormSubmit={this.onShopFormSubmit}/> : null }
+        <button onClick={this.handleNewShop}>Add new business</button>
+          <div className='shop-card-ctn'>
+            {(this.state.addNewShop) ? 
+              <NewShop 
+                getShops={this.props.getShops} 
+                handleCreate={this.handleCreate} 
+                handleNewShop={this.handleNewShop}
+                getUserShops={this.props.getUserShops}
+                user={this.props.user}
+                /> 
+              : null }
+            {(this.state.updateShop) ? 
+              <EditShop 
+                shop={this.state.shop} 
+                onShopFormChange={this.onShopFormChange} 
+                onShopFormSubmit={this.onShopFormSubmit}
+                user={this.props.user}
+              /> 
+              : null }
             {(this.props.shops) ? this.renderShops():  <h1>Loading Your Businesses, Boss...</h1>}
           </div>
         </div>

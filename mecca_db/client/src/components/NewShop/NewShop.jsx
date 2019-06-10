@@ -6,7 +6,6 @@ class NewShop extends React.Component{
   constructor(props){
     super(props);
     this.state = {
-      isCreated: false,
       user_id: 7
     }
   }
@@ -28,25 +27,27 @@ class NewShop extends React.Component{
       description: this.state.description,
       is_green: this.state.is_green,
       category: this.state.category,
-      user_id: this.state.user_id
+      user_id: this.props.user.id
     }
 
-    const shop = await createShop(this.state.user_id, newShop)
+    await createShop(this.props.user.id, newShop)
+    await this.props.getShops()
+    await this.props.handleCreate()
+    await this.props.getUserShops()
+    await this.props.handleNewShop()
 
-    this.setState({
-      shop: shop,
-      created: true
-    })
-    if (this.setState.created === true) {
-      return <Redirect to='/user/dashboard' />
-    }
+    
   }
 
   render(){
+    if (this.state.isCreated) {
+      return <Redirect to='/user/dashboard' />
+    }else{
+
     return(
-      <div>
-        <h2>New Shop</h2>
+      <div className="form-ctn">
         <form onSubmit={this.onShopFormSubmit}>
+          <h2>New Shop</h2>
           <div>
             <label htmlFor="name">Name of Business</label>
             <input
@@ -107,6 +108,7 @@ class NewShop extends React.Component{
         </form>
       </div>
     )
+    }
   }
 }
 
