@@ -110,6 +110,9 @@ class Dashboard extends React.Component{
   }
 
   render(){
+    if (!this.props.user){
+      return <Redirect to='/main'/>
+    }
     return(
       <div>
         <Header user={this.props.user} logout={this.props.logout}/>

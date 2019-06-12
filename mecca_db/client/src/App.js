@@ -48,10 +48,8 @@ class App extends React.Component {
         localStorage.setItem("jwt", userData.token);
         this.fetchUser()
         this.clickedLogin()
-      }else{
-        return <Redirect to='/main'/>
       }
-    }
+  }
 
   authHandleChange = (e) => {
       const { name, value } = e.target;
@@ -96,6 +94,8 @@ class App extends React.Component {
       this.setState({
         user: null
       })
+     
+
     }
 
   //--------------------------Shops & Reviews --------------------//
