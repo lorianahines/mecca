@@ -1,8 +1,6 @@
 # Mecca
 A website guiding you to black owned businesses for every need.
 
-![a41da708-81e9-4ec3-9364-9d8748f7063d-fe59be94-2b9a-4cf2-ad18-5c1331e3e566-v1](https://user-images.githubusercontent.com/44539157/60976553-e260da80-a2fb-11e9-978e-6d34ef67954f.png)
-
 ## Scope
 #### What is Mecca?
 - A website that promotes black owned business for every want and need
